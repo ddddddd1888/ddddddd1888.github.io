@@ -4,7 +4,6 @@ import fragmentShader from './shaders/fragment.glsl'
 
 import atmosphereVertexShader from './shaders/atmosphereVertex.glsl'
 import atmosphereFragmentShader from './shaders/atmosphereFragment.glsl'
-
 // console.log(vertexShader)
 // console.log(fragmentShader)
 
@@ -17,14 +16,15 @@ const camera = new THREE.
     1000
 )
 
-const renderer = new THREE.WebGLRenderer(
-    {
-    antialias: true
-    }
-);
-renderer.setSize( window.innerWidth, window.innerHeight);
+const renderer = new THREE.WebGLRenderer({
+  antialias: true,
+  canvas: document.querySelector('canvas')
+})
+const canvasContainer =  document.querySelector('#canvasContainer')
+console.log(canvasContainer)
+
+renderer.setSize(canvasContainer.offsetWidth, canvasContainer.offsetHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
-document.body.appendChild( renderer.domElement );
 
 // create a sphere
 const sphere = new THREE.Mesh(
